@@ -13,9 +13,10 @@ import {
 
 interface SidebarProps {
   onLogout: () => void;
+  onNavigate?: () => void; // 👈 NUEVO
 }
 
-export const Sidebar = ({ onLogout }: SidebarProps) => {
+export const Sidebar = ({ onLogout, onNavigate }: SidebarProps) => {
   const pathname = usePathname();
 
   const menuItems = [
@@ -37,7 +38,7 @@ export const Sidebar = ({ onLogout }: SidebarProps) => {
         </p>
       </div>
 
-      {/* 🔹 MENÚ (con scroll si crece) */}
+      {/* 🔹 MENÚ */}
       <nav className="flex-1 space-y-2 overflow-y-auto pr-1">
         {menuItems.map((item, index) => {
           const isActive =
@@ -49,6 +50,7 @@ export const Sidebar = ({ onLogout }: SidebarProps) => {
               key={index}
               href={item.path}
               prefetch={true}
+              onClick={() => onNavigate?.()} // 👈 CIERRA EN MÓVIL
               className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-200 group ${
                 isActive
                   ? "bg-blue-800 border-l-4 border-green-500 text-white shadow-inner"
@@ -70,7 +72,10 @@ export const Sidebar = ({ onLogout }: SidebarProps) => {
 
       {/* 🔹 LOGOUT */}
       <button
-        onClick={onLogout}
+        onClick={() => {
+          onNavigate?.(); // 👈 también cierra en móvil
+          onLogout();
+        }}
         className="mt-4 flex items-center gap-3 p-4 rounded-xl text-red-400 hover:bg-red-900/20 hover:text-red-500 transition-all font-black text-sm border border-red-900/30"
       >
         <LogOut size={20} />

@@ -37,7 +37,7 @@ export default function DashboardLayout({
 
           {/* Sidebar */}
           <div className="w-64 bg-white h-full shadow-xl">
-            <Sidebar onLogout={handleLogout} />
+            <Sidebar onLogout={handleLogout} onNavigate={() => setOpen(false)} />
           </div>
         </div>
       )}
