@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Heart, MessageSquare, Star, Search, ChevronDown, ChevronUp, Send } from "lucide-react";
 
-// Definimos las interfaces para quitar el error de "Unexpected any"
+// Definimos las interfaces para quitar el error de "Unexpected any m"
 interface Comentario {
   id: string;
   usuario: string;
