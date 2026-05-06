@@ -9,6 +9,7 @@ import {
   Heart,
   LogOut,
   NotebookPen,
+  UserPlus,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -25,6 +26,7 @@ export const Sidebar = ({ onLogout, onNavigate }: SidebarProps) => {
     { icon: <Calendar size={20} />, label: "Horario", path: "/dashboard/horario" },
     { icon: <BookOpen size={20} />, label: "Kardex", path: "/dashboard/kardex" },
     { icon: <Heart size={20} />, label: "Profesores Favoritos", path: "/dashboard/profesores" },
+    { icon: <UserPlus size={20} />, label: "Panel Admin", path: "/admin/profesores" },
   ];
 
   return (
